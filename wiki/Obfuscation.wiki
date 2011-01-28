@@ -1,0 +1,84 @@
+#summary Obfuscating code in Blogger Pages or other simply served HTML pages.
+#labels Phase-Deploy
+
+= Introduction =
+
+It is sometimes necessary to obfuscate code, as shown at [http://3w.blogidol.ro/2010/04/encryption-on-blogger-i-obfuscation.html BlogIdol].
+
+
+= Details =
+
+This is not encryption per se but rather code obfuscation. It makes it more difficult for somebody to steal your code. It is a technique sometimes employed by template designers to make their credits in the footer more difficult to modify. It involves escaping the characters to be hidden using a the escape / unescape function. Let’s take for instance the following link:
+{{{
+<a href="http://www.blogidol.ro" target="_blank">BlogIdol.ro</a>
+}}}
+
+Escaped, the code will look:
+{{{
+<Script Language='Javascript'> 
+<!-- 
+document.write(unescape(%3C%61%20%68%72%65%66%3D%22%68%74%74%70%3A%2F%2F%77%77%77%2E%62%6C%6F%67%69%64%6F%6C%2E%72%6F%22%20%74%61%72%67%65%74%3D%22%5F%62%6C%61%6E%6B%22%3E%42%6C%6F%67%49%64%6F%6C%2E%72%6F%3C%2F%61%3E)); 
+//--> 
+</Script>
+}}}
+
+The following table is to be used in conjunction with the escape.js script:
+{{{
+<table style="width: 500px; height: 400px;" border="0" 
+cellpadding="1" cellspacing="0"> 
+  <tbody> 
+    <tr> 
+      <td align="left" bgcolor="#aaaaaa"> 
+      <table style="width: 500px; height: 400px;" border="0" 
+cellpadding="1" cellspacing="0"> 
+        <tbody> 
+          <tr> 
+            <td 
+style="width: 500px; background-color: rgb(238, 238, 238);"><font 
+color="#ffffff"> </font> 
+
+            <font color="#ffffff"><b> </b> </font></td> 
+          </tr> 
+          <tr> 
+            <td 
+style="text-align: center; background-color: rgb(238, 238, 238); width: 400px;"> 
+            <div style="text-align: left;"> </div> 
+            <table style="width: 490px; height: 400px;" 
+cellpadding="0" cellspacing="0"> 
+              <tbody> 
+                <tr> 
+                  <td 
+style="width: 490px; vertical-align: top; background-color: rgb(238, 238, 238);"> 
+                  <form name="form1"><b>clear text</b><br /> 
+                    <textarea name="clear" rows="10" 
+cols="40"></textarea> <br /> 
+                    <b>escape text</b><br /> 
+                    <textarea name="encode" rows="10" 
+cols="40"></textarea> <br /> 
+                    <input value="Complete Escape" 
+onclick="uncode();" type="button" /> <input 
+value="Complete Unescape" onclick="deUncode();" 
+type="button" /><br /> 
+                    <input value="Simple Escape" 
+onclick="escape_code();" type="button" /> <input 
+value="Simple Unescape" onclick="deUncode();" 
+type="button" /><input value="Clear" type="reset" /></form> 
+                  </center> 
+                  <br /> 
+                  <br /> 
+                  </td> 
+                </tr> 
+              </tbody> 
+            </table> 
+            </td> 
+          </tr> 
+        </tbody> 
+      </table> 
+      </td> 
+    </tr> 
+  </tbody> 
+</table>
+}}}
+
+=Sources=
+The above can be accessed at [http://accessify.com/tools-and-wizards/developer-tools/quick-escape/default.php Q-esc] from [http://www.web-code.org/coding-tools/javascript-escape-unescape-converter-tool.html esc-unesc Converter]
